@@ -1,14 +1,14 @@
-import { skillIconsList } from '@/utils/skill-icons'
+import { SkillIcon } from '@/types'
 import { Icon } from '@iconify-icon/react'
 import { useEffect, useState } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 
 interface SkillIconProps {
-  icon: (typeof skillIconsList)[number]
+  icon: SkillIcon
   incorrect?: boolean
 }
 
-function SkillIcon({ icon, incorrect }: SkillIconProps) {
+function ShowSkillIcon({ icon, incorrect }: SkillIconProps) {
   const { isDarkMode } = useDarkMode()
   const [isClicked, setClicked] = useState(false)
   const [isHide, setHide] = useState(false)
@@ -64,4 +64,4 @@ function SkillIcon({ icon, incorrect }: SkillIconProps) {
   )
 }
 
-export default SkillIcon
+export default ShowSkillIcon
