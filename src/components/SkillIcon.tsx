@@ -1,3 +1,4 @@
+import useAppContext from '@/hooks/useAppContext'
 import { SkillIcon } from '@/types'
 import { Icon } from '@iconify-icon/react'
 import { useEffect, useState } from 'react'
@@ -9,6 +10,7 @@ interface SkillIconProps {
 }
 
 function ShowSkillIcon({ icon, incorrect }: SkillIconProps) {
+  const { setClickedIcons } = useAppContext()
   const { isDarkMode } = useDarkMode()
   const [isClicked, setClicked] = useState(false)
   const [isHide, setHide] = useState(false)
@@ -26,6 +28,7 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps) {
       return
     }
 
+    setClickedIcons((prev) => new Set([...prev, icon]))
     setClicked(!isClicked)
   }
 
