@@ -1,4 +1,4 @@
-export const skillIcons = Object.freeze([
+export const skillIconsList = Object.freeze([
   'ableton',
   'activitypub',
   'actix',

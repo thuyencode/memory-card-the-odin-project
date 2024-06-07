@@ -1,10 +1,10 @@
+import { skillIconsList } from '@/utils/skill-icons'
 import { Icon } from '@iconify-icon/react'
 import { useEffect, useState } from 'react'
 import { useDarkMode } from 'usehooks-ts'
-import { skillIcons } from '../utils/skill-icons'
 
 interface SkillIconProps {
-  icon: (typeof skillIcons)[number]
+  icon: (typeof skillIconsList)[number]
   incorrect?: boolean
 }
 
