@@ -6,7 +6,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime'
+    'plugin:react/jsx-runtime',
+    'standard-with-typescript'
   ],
   settings: {
     react: {
@@ -15,7 +16,7 @@ module.exports = {
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'react'],
+  plugins: ['@typescript-eslint', 'react-refresh', 'react'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
