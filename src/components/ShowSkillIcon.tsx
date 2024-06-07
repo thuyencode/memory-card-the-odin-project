@@ -10,7 +10,7 @@ interface SkillIconProps {
 }
 
 function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
-  const { setClickedIcons } = useAppContext()
+  const { setClickedIcons, generateRandomIconsList } = useAppContext()
   const { isDarkMode } = useDarkMode()
   const [isClicked, setClicked] = useState(false)
   const [isHide, setHide] = useState(false)
@@ -19,8 +19,10 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
     if (isClicked) {
       setTimeout(() => {
         setHide(true)
+        generateRandomIconsList()
       }, 500)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isClicked])
 
   function onClick(): void {
