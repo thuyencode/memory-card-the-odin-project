@@ -1,29 +1,29 @@
 import useAppContext from '@/hooks/useAppContext'
-import { SkillIcon } from '@/types'
+import { type SkillIcon } from '@/types'
 import { Icon } from '@iconify-icon/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 
 interface SkillIconProps {
   icon: SkillIcon
-  incorrect?: boolean
+  incorrect?: true
 }
 
-function ShowSkillIcon({ icon, incorrect }: SkillIconProps) {
+function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
   const { setClickedIcons } = useAppContext()
   const { isDarkMode } = useDarkMode()
   const [isClicked, setClicked] = useState(false)
   const [isHide, setHide] = useState(false)
 
   useEffect(() => {
-    if (isClicked == true) {
+    if (isClicked) {
       setTimeout(() => {
         setHide(true)
       }, 500)
     }
   }, [isClicked])
 
-  function onClick() {
+  function onClick(): void {
     if (isClicked) {
       return
     }
@@ -32,11 +32,11 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps) {
     setClicked(!isClicked)
   }
 
-  function getAnimationStyle() {
+  function getAnimationStyle(): string {
     return incorrect ? 'animate-shake opacity-80' : 'animate-bounce opacity-80'
   }
 
-  function getIcon() {
+  function getIcon(): string {
     return incorrect
       ? 'emojione:cross-mark-button'
       : 'emojione:white-heavy-check-mark'

@@ -1,11 +1,11 @@
-import { SkillIcon } from '@/types'
+import { type SkillIcon } from '@/types'
 import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
   createContext,
   useEffect,
-  useState
+  useState,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction
 } from 'react'
 
 interface ContextState {
@@ -14,7 +14,11 @@ interface ContextState {
 
 export const Context = createContext<ContextState | null>(null)
 
-export function ContextProvider({ children }: { children: ReactNode }) {
+export function ContextProvider({
+  children
+}: {
+  children: ReactNode
+}): ReactNode {
   const [clickedIcons, setClickedIcons] = useState(new Set<SkillIcon>())
   // const [latestClickedIcon, setLatestClickedIcon] = useState('')
 
