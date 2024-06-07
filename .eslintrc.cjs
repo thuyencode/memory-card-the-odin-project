@@ -16,11 +16,14 @@ module.exports = {
   },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-refresh', 'react'],
+  plugins: ['@typescript-eslint', 'react-refresh', 'react', 'jsx-a11y'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true }
-    ]
+    ],
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/space-before-function-paren': 'off',
+    'multiline-ternary': 'off'
   }
 }
