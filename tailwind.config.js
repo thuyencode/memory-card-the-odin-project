@@ -1,4 +1,5 @@
 import daisyui from 'daisyui'
+import * as tailwindcss_animate from 'tailwindcss-animate'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,5 +7,5 @@ export default {
   theme: {
     extend: {}
   },
-  plugins: [daisyui]
+  plugins: [daisyui, tailwindcss_animate]
 }
