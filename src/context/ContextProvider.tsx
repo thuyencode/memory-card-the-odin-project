@@ -14,6 +14,8 @@ export interface AppContextState {
   randomIcons: SkillIcon[]
   setRandomIcons: Dispatch<SetStateAction<SkillIcon[]>>
   generateRandomIconsList: () => void
+  isOneIconClicked: boolean
+  setOneIconClicked: Dispatch<SetStateAction<boolean>>
 }
 
 export const Context = createContext<AppContextState | null>(null)
@@ -26,7 +28,7 @@ export function ContextProvider({
   const [clickedIcons, setClickedIcons] = useState(new Set<SkillIcon>())
   const [randomIcons, setRandomIcons] =
     useState<SkillIcon[]>(getRandomIconsList())
-  // const [latestClickedIcon, setLatestClickedIcon] = useState('')
+  const [isOneIconClicked, setOneIconClicked] = useState(false)
 
   useEffect(() => {
     console.log(clickedIcons)
@@ -42,7 +44,9 @@ export function ContextProvider({
         setClickedIcons,
         randomIcons,
         setRandomIcons,
-        generateRandomIconsList
+        generateRandomIconsList,
+        isOneIconClicked,
+        setOneIconClicked
       }}
     >
       {children}
