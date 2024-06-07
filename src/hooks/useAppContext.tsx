@@ -1,7 +1,7 @@
-import { Context } from '@/context/ContextProvider'
+import { Context, type AppContextState } from '@/context/ContextProvider'
 import { useContext } from 'react'
 
-export default function useAppContext() {
+export default function useAppContext(): AppContextState {
   const context = useContext(Context)
 
   if (context == null) {

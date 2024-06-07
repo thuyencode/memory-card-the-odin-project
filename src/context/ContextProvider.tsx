@@ -8,11 +8,11 @@ import {
   type SetStateAction
 } from 'react'
 
-interface ContextState {
+export interface AppContextState {
   setClickedIcons: Dispatch<SetStateAction<Set<SkillIcon>>>
 }
 
-export const Context = createContext<ContextState | null>(null)
+export const Context = createContext<AppContextState | null>(null)
 
 export function ContextProvider({
   children

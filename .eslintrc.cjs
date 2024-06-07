@@ -14,7 +14,7 @@ module.exports = {
       version: 'detect'
     }
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'react-refresh', 'react', 'jsx-a11y'],
   rules: {

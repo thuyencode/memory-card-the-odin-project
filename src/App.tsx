@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react'
-import ShowSkillIcon from './components/SkillIcon'
+import ShowSkillIcon from './components/ShowSkillIcon'
 import { ContextProvider } from './context/ContextProvider'
 import { skillIconsList } from './utils/skill-icons'
 
