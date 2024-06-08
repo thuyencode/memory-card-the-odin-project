@@ -1,62 +1,76 @@
 import useAppContext from '@/hooks/useAppContext'
+import {
+  initialSkillIconSlotState,
+  skillIconSlotReducer
+} from '@/reducers/SkillIconSlotReducer'
 import { type SkillIcon } from '@/types'
 import { capitalize } from '@/utils'
 import { Icon } from '@iconify-icon/react'
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useReducer, type ReactNode } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 
 interface SkillIconSlotProps {
   icon: SkillIcon
-  incorrect?: true
 }
 
-function SkillIconSlot({ icon, incorrect }: SkillIconSlotProps): ReactNode {
+function SkillIconSlot({ icon }: SkillIconSlotProps): ReactNode {
   const {
+    clickedIcons,
     setClickedIcon,
     generateRandomIconsList,
     isOneIconClicked,
     setOneIconClicked
   } = useAppContext()
   const { isDarkMode } = useDarkMode()
-  const [isClicked, setClicked] = useState(false)
-  const [isHide, setHide] = useState(false)
+  const [state, dispatch] = useReducer(
+    skillIconSlotReducer,
+    initialSkillIconSlotState
+  )
 
   useEffect(() => {
-    if (isClicked) {
+    if (state.isClicked) {
       setTimeout(() => {
         generateRandomIconsList()
-        setHide(true)
         setOneIconClicked(false)
+
+        dispatch({ type: 'SET_HIDE_OR_NOT', value: true })
       }, 500)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isClicked])
+  }, [state.isClicked])
 
   function onClick(): void {
     if (isOneIconClicked) {
       return
     }
 
-    if (isClicked) {
+    if (state.isClicked) {
       return
     }
 
-    setClicked(!isClicked)
+    dispatch({ type: 'SET_CLICKED_OR_NOT', value: true })
+    dispatch({
+      type: 'SET_INCORRECT_OR_CORRECT',
+      value: clickedIcons.has(icon)
+    })
+
     setOneIconClicked(true)
     setClickedIcon(icon)
   }
 
   function getAnimationStyle(): string {
-    return incorrect ? 'animate-shake opacity-80' : 'animate-bounce opacity-80'
+    return state.isIncorrect
+      ? 'animate-shake opacity-80'
+      : 'animate-bounce opacity-80'
   }
 
   function getMarkBtnIcon(): string {
-    return incorrect
+    return state.isIncorrect
       ? 'emojione:cross-mark-button'
       : 'emojione:white-heavy-check-mark'
   }
 
-  if (isHide) {
+  if (state.isHide) {
     return null
   }
 
@@ -67,11 +81,11 @@ function SkillIconSlot({ icon, incorrect }: SkillIconSlotProps): ReactNode {
       data-tip={capitalize(icon)}
     >
       <img
-        className={`h-20 w-20 transform-gpu transition-opacity md:h-24 md:w-24 lg:h-32 lg:w-32 ${isClicked ? getAnimationStyle() : ''}`}
+        className={`h-20 w-20 transform-gpu transition-opacity md:h-24 md:w-24 lg:h-32 lg:w-32 ${state.isClicked ? getAnimationStyle() : ''}`}
         src={`https://skillicons.dev/icons?i=${icon}&theme=${isDarkMode ? 'light' : 'dark'}`}
         alt={icon}
       />
-      {isClicked ? (
+      {state.isClicked ? (
         <Icon
           className='absolute inset-0 m-auto h-fit w-fit transform-gpu animate-ping text-2xl md:text-4xl'
           icon={getMarkBtnIcon()}
