@@ -1,8 +1,8 @@
+import { initialIconsState, reducer } from '@/reducer'
 import { type SkillIcon } from '@/types'
-import { getRandomIconsList } from '@/utils'
 import {
   createContext,
-  useEffect,
+  useReducer,
   useState,
   type Dispatch,
   type ReactNode,
@@ -10,10 +10,9 @@ import {
 } from 'react'
 
 export interface AppContextState {
-  setClickedIcons: Dispatch<SetStateAction<Set<SkillIcon>>>
   randomIcons: SkillIcon[]
-  setRandomIcons: Dispatch<SetStateAction<SkillIcon[]>>
   generateRandomIconsList: () => void
+  setClickedIcon: (icon: SkillIcon) => void
   isOneIconClicked: boolean
   setOneIconClicked: Dispatch<SetStateAction<boolean>>
 }
@@ -25,26 +24,23 @@ export function ContextProvider({
 }: {
   children: ReactNode
 }): ReactNode {
-  const [clickedIcons, setClickedIcons] = useState(new Set<SkillIcon>())
-  const [randomIcons, setRandomIcons] =
-    useState<SkillIcon[]>(getRandomIconsList())
+  const [state, dispatch] = useReducer(reducer, initialIconsState)
   const [isOneIconClicked, setOneIconClicked] = useState(false)
 
-  useEffect(() => {
-    console.log(clickedIcons)
-  }, [clickedIcons])
-
   function generateRandomIconsList(): void {
-    setRandomIcons(getRandomIconsList())
+    dispatch({ type: 'GENERATE_RANDOM_ICONS_LIST' })
+  }
+
+  function setClickedIcons(icon: SkillIcon): void {
+    dispatch({ type: 'SET_CLICKED_ICON', icon })
   }
 
   return (
     <Context.Provider
       value={{
-        setClickedIcons,
-        randomIcons,
-        setRandomIcons,
+        randomIcons: state.randomIcons,
         generateRandomIconsList,
+        setClickedIcon: setClickedIcons,
         isOneIconClicked,
         setOneIconClicked
       }}

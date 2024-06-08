@@ -11,7 +11,7 @@ interface SkillIconProps {
 
 function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
   const {
-    setClickedIcons,
+    setClickedIcon,
     generateRandomIconsList,
     isOneIconClicked,
     setOneIconClicked
@@ -23,8 +23,8 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
   useEffect(() => {
     if (isClicked) {
       setTimeout(() => {
-        setHide(true)
         generateRandomIconsList()
+        setHide(true)
         setOneIconClicked(false)
       }, 500)
     }
@@ -40,16 +40,16 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
       return
     }
 
-    setOneIconClicked(true)
-    setClickedIcons((prev) => new Set([...prev, icon]))
     setClicked(!isClicked)
+    setOneIconClicked(true)
+    setClickedIcon(icon)
   }
 
   function getAnimationStyle(): string {
     return incorrect ? 'animate-shake opacity-80' : 'animate-bounce opacity-80'
   }
 
-  function getIcon(): string {
+  function getMarkBtnIcon(): string {
     return incorrect
       ? 'emojione:cross-mark-button'
       : 'emojione:white-heavy-check-mark'
@@ -66,12 +66,11 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
           className={`h-32 w-32 transform-gpu transition-opacity ${isClicked ? getAnimationStyle() : ''}`}
           src={`https://skillicons.dev/icons?i=${icon}&theme=${isDarkMode ? 'light' : 'dark'}`}
           alt={icon}
-          key={icon}
         />
         {isClicked ? (
           <Icon
             className='absolute inset-0 m-auto h-fit w-fit transform-gpu animate-ping text-4xl'
-            icon={getIcon()}
+            icon={getMarkBtnIcon()}
           />
         ) : null}
       </div>

@@ -24,6 +24,7 @@ module.exports = {
     ],
     'space-before-function-paren': 'off',
     '@typescript-eslint/space-before-function-paren': 'off',
-    'multiline-ternary': 'off'
+    'multiline-ternary': 'off',
+    '@typescript-eslint/indent': 'off'
   }
 }
