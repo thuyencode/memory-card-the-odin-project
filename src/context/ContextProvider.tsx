@@ -31,7 +31,7 @@ export function ContextProvider({
     dispatch({ type: 'GENERATE_RANDOM_ICONS_LIST' })
   }
 
-  function setClickedIcons(icon: SkillIcon): void {
+  function setClickedIcon(icon: SkillIcon): void {
     dispatch({ type: 'SET_CLICKED_ICON', icon })
   }
 
@@ -40,7 +40,7 @@ export function ContextProvider({
       value={{
         randomIcons: state.randomIcons,
         generateRandomIconsList,
-        setClickedIcon: setClickedIcons,
+        setClickedIcon,
         isOneIconClicked,
         setOneIconClicked
       }}
