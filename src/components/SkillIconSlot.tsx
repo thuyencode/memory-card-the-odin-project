@@ -5,12 +5,12 @@ import { Icon } from '@iconify-icon/react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 
-interface SkillIconProps {
+interface SkillIconSlotProps {
   icon: SkillIcon
   incorrect?: true
 }
 
-function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
+function SkillIconSlot({ icon, incorrect }: SkillIconSlotProps): ReactNode {
   const {
     setClickedIcon,
     generateRandomIconsList,
@@ -81,4 +81,4 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
   )
 }
 
-export default ShowSkillIcon
+export default SkillIconSlot

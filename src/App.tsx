@@ -1,15 +1,11 @@
 import { type ReactNode } from 'react'
-import ShowSkillIcon from './components/ShowSkillIcon'
-import useAppContext from './hooks/useAppContext'
+import SkillIconArea from './components/SkillIconArea'
+import { ContextProvider } from './context/ContextProvider'
 
 export default function App(): ReactNode {
-  const { randomIcons } = useAppContext()
-
   return (
-    <div className='absolute inset-0 m-auto grid h-fit w-fit grid-cols-2 gap-7 sm:grid-cols-5'>
-      {randomIcons.map((icon) => (
-        <ShowSkillIcon icon={icon} key={icon} incorrect />
-      ))}
-    </div>
+    <ContextProvider>
+      <SkillIconArea />
+    </ContextProvider>
   )
 }

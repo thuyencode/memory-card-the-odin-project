@@ -1,3 +1,3 @@
-import { skillIconsList } from '@/utils/skill-icons'
+import { type skillIconsList } from '@/utils/skill-icons'
 
 export type SkillIcon = (typeof skillIconsList)[number]
