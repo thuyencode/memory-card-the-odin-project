@@ -11,7 +11,11 @@ export const initialSkillIconSlotState: SkillIconSlotState = {
 }
 
 interface SkillIconSlotAction {
-  type: 'SET_HIDE_OR_NOT' | 'SET_CLICKED_OR_NOT' | 'SET_INCORRECT_OR_CORRECT'
+  type:
+    | 'SET_HIDE_OR_NOT'
+    | 'SET_CLICKED_OR_NOT'
+    | 'SET_INCORRECT_OR_CORRECT'
+    | 'RESET'
   value: boolean
 }
 
@@ -37,6 +41,9 @@ export function skillIconSlotReducer(
         ...state,
         isIncorrect: action.value
       }
+
+    case 'RESET':
+      return initialSkillIconSlotState
 
     default:
       return state

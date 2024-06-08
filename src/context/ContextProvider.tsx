@@ -12,6 +12,8 @@ import {
 export interface AppContextState {
   randomIcons: SkillIcon[]
   clickedIcons: Set<SkillIcon>
+  highestScore: number
+  currentScore: number
   generateRandomIconsList: () => void
   setClickedIcon: (icon: SkillIcon) => void
   isOneIconClicked: boolean
@@ -41,6 +43,8 @@ export function ContextProvider({
       value={{
         randomIcons: state.randomIcons,
         clickedIcons: state.clickedIcons,
+        highestScore: state.highestScore,
+        currentScore: state.currentScore,
         generateRandomIconsList,
         setClickedIcon,
         isOneIconClicked,

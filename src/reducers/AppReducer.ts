@@ -6,7 +6,6 @@ export interface AppState {
   randomIcons: SkillIcon[]
   highestScore: number
   currentScore: number
-  incorrect: boolean
 }
 
 type AppAction =
@@ -15,15 +14,17 @@ type AppAction =
       icon: SkillIcon
     }
   | {
-      type: 'GENERATE_RANDOM_ICONS_LIST'
+      type:
+        | 'GENERATE_RANDOM_ICONS_LIST'
+        | 'ADD_ONE_SCORE'
+        | 'RESET_CURRENT_SCORE'
     }
 
 export const initialAppState: AppState = {
   clickedIcons: new Set<SkillIcon>(),
   randomIcons: getRandomIconsList(),
   highestScore: 0,
-  currentScore: 0,
-  incorrect: false
+  currentScore: 0
 }
 
 export function appReducer(state: AppState, action: AppAction): AppState {
@@ -31,7 +32,16 @@ export function appReducer(state: AppState, action: AppAction): AppState {
     case 'SET_CLICKED_ICON':
       return {
         ...state,
-        clickedIcons: new Set([...state.clickedIcons, action.icon])
+        clickedIcons: state.clickedIcons.has(action.icon)
+          ? initialAppState.clickedIcons
+          : new Set([...state.clickedIcons, action.icon]),
+        currentScore: state.clickedIcons.has(action.icon)
+          ? initialAppState.currentScore
+          : state.currentScore + 1,
+        highestScore:
+          state.highestScore === state.currentScore
+            ? state.highestScore + 1
+            : state.highestScore
       }
 
     case 'GENERATE_RANDOM_ICONS_LIST':
