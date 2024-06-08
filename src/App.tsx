@@ -6,7 +6,7 @@ export default function App(): ReactNode {
   const { randomIcons } = useAppContext()
 
   return (
-    <div className='absolute inset-0 m-auto grid h-fit w-fit grid-cols-5 grid-rows-2 gap-7'>
+    <div className='absolute inset-0 m-auto grid h-fit w-fit grid-cols-2 gap-7 sm:grid-cols-5'>
       {randomIcons.map((icon) => (
         <ShowSkillIcon icon={icon} key={icon} incorrect />
       ))}

@@ -18,3 +18,6 @@ function getRandomIndexes(): Set<number> {
 export function getRandomIconsList(): SkillIcon[] {
   return [...getRandomIndexes()].map((index) => skillIconsList[index])
 }
+
+export const capitalize = (str: string): string =>
+  `${str.charAt(0).toUpperCase()}${str.slice(1)}`

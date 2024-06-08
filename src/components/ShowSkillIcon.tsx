@@ -1,5 +1,6 @@
 import useAppContext from '@/hooks/useAppContext'
 import { type SkillIcon } from '@/types'
+import { capitalize } from '@/utils'
 import { Icon } from '@iconify-icon/react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { useDarkMode } from 'usehooks-ts'
@@ -60,22 +61,23 @@ function ShowSkillIcon({ icon, incorrect }: SkillIconProps): ReactNode {
   }
 
   return (
-    <figure className='group' onClick={onClick}>
-      <div className='relative duration-150 group-hover:scale-110'>
-        <img
-          className={`h-32 w-32 transform-gpu transition-opacity ${isClicked ? getAnimationStyle() : ''}`}
-          src={`https://skillicons.dev/icons?i=${icon}&theme=${isDarkMode ? 'light' : 'dark'}`}
-          alt={icon}
+    <div
+      className='tooltip tooltip-info relative duration-150 hover:scale-110'
+      onClick={onClick}
+      data-tip={capitalize(icon)}
+    >
+      <img
+        className={`h-20 w-20 transform-gpu transition-opacity lg:h-32 lg:w-32 ${isClicked ? getAnimationStyle() : ''}`}
+        src={`https://skillicons.dev/icons?i=${icon}&theme=${isDarkMode ? 'light' : 'dark'}`}
+        alt={icon}
+      />
+      {isClicked ? (
+        <Icon
+          className='absolute inset-0 m-auto h-fit w-fit transform-gpu animate-ping text-2xl lg:text-4xl'
+          icon={getMarkBtnIcon()}
         />
-        {isClicked ? (
-          <Icon
-            className='absolute inset-0 m-auto h-fit w-fit transform-gpu animate-ping text-4xl'
-            icon={getMarkBtnIcon()}
-          />
-        ) : null}
-      </div>
-      <figcaption className='mt-4 text-center capitalize'>{icon}</figcaption>
-    </figure>
+      ) : null}
+    </div>
   )
 }
 
