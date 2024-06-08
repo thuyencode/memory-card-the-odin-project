@@ -10,14 +10,17 @@ export const initialSkillIconSlotState: SkillIconSlotState = {
   isIncorrect: false
 }
 
-interface SkillIconSlotAction {
-  type:
-    | 'SET_HIDE_OR_NOT'
-    | 'SET_CLICKED_OR_NOT'
-    | 'SET_INCORRECT_OR_CORRECT'
-    | 'RESET'
-  value: boolean
-}
+type SkillIconSlotAction =
+  | {
+      type:
+        | 'SET_HIDE_OR_NOT'
+        | 'SET_CLICKED_OR_NOT'
+        | 'SET_INCORRECT_OR_CORRECT'
+      value: boolean
+    }
+  | {
+      type: 'RESET'
+    }
 
 export function skillIconSlotReducer(
   state: SkillIconSlotState,

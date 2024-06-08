@@ -34,6 +34,7 @@ function SkillIconSlot({ icon }: SkillIconSlotProps): ReactNode {
         setOneIconClicked(false)
 
         dispatch({ type: 'SET_HIDE_OR_NOT', value: true })
+        dispatch({ type: 'RESET' })
       }, 500)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
