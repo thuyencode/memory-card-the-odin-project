@@ -1,12 +1,12 @@
 import { type ReactElement } from 'react'
-import ScoresBoard from './components/ScoresBoard'
+import ScoresBoards from './components/ScoresBoards'
 import SkillIconArea from './components/SkillIconArea'
 import { ContextProvider } from './context/ContextProvider'
 
 export default function App(): ReactElement {
   return (
     <ContextProvider>
-      <ScoresBoard />
+      <ScoresBoards />
       <SkillIconArea />
     </ContextProvider>
   )

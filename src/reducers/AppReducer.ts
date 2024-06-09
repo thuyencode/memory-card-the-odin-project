@@ -14,10 +14,7 @@ type AppAction =
       icon: SkillIcon
     }
   | {
-      type:
-        | 'GENERATE_RANDOM_ICONS_LIST'
-        | 'ADD_ONE_SCORE'
-        | 'RESET_CURRENT_SCORE'
+      type: 'GENERATE_RANDOM_ICONS_LIST'
     }
 
 export const initialAppState: AppState = {
@@ -38,8 +35,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
         currentScore: state.clickedIcons.has(action.icon)
           ? initialAppState.currentScore
           : state.currentScore + 1,
-        highestScore:
-          state.highestScore === state.currentScore
+        highestScore: state.clickedIcons.has(action.icon)
+          ? state.highestScore
+          : state.highestScore === state.currentScore
             ? state.highestScore + 1
             : state.highestScore
       }
