@@ -10,6 +10,9 @@ export default {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         display: ['Silkscreen', ...defaultTheme.fontFamily.sans]
+      },
+      screens: {
+        xs: '330px'
       }
     }
   },
