@@ -4,7 +4,7 @@ import { type ReactElement } from 'react'
 
 function ScoresBoards(): ReactElement {
   return (
-    <div className='join inset-0 mx-auto h-fit w-fit bg-base-300 text-center font-display max-sm:join-vertical sm:absolute sm:mt-28 lg:mt-20'>
+    <div className='join inset-0 mx-auto h-fit w-fit bg-base-200 text-center font-display max-sm:join-vertical sm:absolute sm:mt-28 lg:mt-20'>
       <CurrentScoreBoard />
       <HighestScoreBoard />
     </div>
@@ -21,7 +21,7 @@ function CurrentScoreBoard(): ReactElement {
         score
       </p>
       <span className='mr-1 sm:hidden'>:</span>
-      <p className='text-lg font-bold sm:text-xl md:text-2xl lg:mt-2'>
+      <p className='text-lg font-bold sm:text-xl sm:duration-500 sm:hover:scale-150 md:text-2xl lg:mt-2'>
         {currentScore}
       </p>
     </div>
@@ -38,7 +38,7 @@ function HighestScoreBoard(): ReactElement {
         <Icon className='text-xl md:text-2xl' icon='noto:trophy' />
       </p>
       <span className='mr-auto sm:hidden'>:</span>
-      <p className='text-lg font-bold sm:text-xl md:text-2xl lg:mt-2'>
+      <p className='text-lg font-bold sm:text-xl sm:duration-500 sm:hover:scale-150 md:text-2xl lg:mt-2'>
         {highestScore}
       </p>
     </div>
