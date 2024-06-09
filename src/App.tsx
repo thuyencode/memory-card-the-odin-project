@@ -1,4 +1,5 @@
 import { type ReactElement } from 'react'
+import Footer from './components/Footer'
 import InfoBubbles from './components/InfoBubbles'
 import ScoresBoards from './components/ScoresBoards'
 import SkillIconArea from './components/SkillIconArea'
@@ -11,6 +12,7 @@ export default function App(): ReactElement {
         <ScoresBoards />
         <SkillIconArea />
       </ContextProvider>
+      <Footer />
       <InfoBubbles />
     </>
   )

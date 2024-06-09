@@ -22,7 +22,7 @@ function GithubBubble(): ReactElement {
       rel='noreferrer'
     >
       <Icon
-        className='rounded-full border border-base-content p-1 text-4xl duration-100 hover:bg-base-content hover:text-base-100 sm:text-5xl'
+        className='cursor-pointer rounded-full border border-base-content p-1 text-4xl duration-100 hover:bg-base-content hover:text-base-100 sm:text-5xl'
         icon='mdi:github'
       />
       <div className='indicator-item'>
@@ -47,7 +47,7 @@ function HelpBubble(): ReactElement {
       data-tip='How to play'
     >
       <Icon
-        className='rounded-full border border-base-content p-2.5 text-2xl duration-100 hover:bg-base-content hover:text-base-100 sm:p-3 sm:text-3xl'
+        className='cursor-pointer rounded-full border border-base-content p-2.5 text-2xl duration-100 hover:bg-base-content hover:text-base-100 sm:p-3 sm:text-3xl'
         icon='mdi:question-mark'
         onClick={handleShow}
       />

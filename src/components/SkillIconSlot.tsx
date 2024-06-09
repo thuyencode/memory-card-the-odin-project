@@ -82,7 +82,7 @@ function SkillIconSlot({ icon }: SkillIconSlotProps): ReactNode {
       data-tip={capitalize(icon)}
     >
       <img
-        className={`h-20 w-20 transform-gpu transition-opacity md:h-24 md:w-24 lg:h-32 lg:w-32 ${state.isClicked ? getAnimationStyle() : ''}`}
+        className={`h-20 w-20 transform-gpu cursor-pointer transition-opacity md:h-24 md:w-24 lg:h-32 lg:w-32 ${state.isClicked ? getAnimationStyle() : ''}`}
         src={`https://skillicons.dev/icons?i=${icon}&theme=${isDarkMode ? 'light' : 'dark'}`}
         alt={icon}
       />
