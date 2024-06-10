@@ -4,14 +4,14 @@ import { createPortal } from 'react-dom'
 
 function Footer(): ReactPortal {
   return createPortal(
-    <footer className='inset-x-0 bottom-0 flex items-center justify-center gap-1 pb-5 text-sm max-sm:flex-col max-sm:text-xs sm:absolute'>
+    <footer className='inset-x-0 bottom-0 mb-2.5 flex items-center justify-center gap-1 text-sm max-sm:flex-col max-sm:text-xs sm:absolute sm:mb-5'>
       <a
         className='inline-flex items-center gap-0.5'
         href='https://github.com/thuyencode/memory-card-the-odin-project'
         target='_blank'
         rel='noreferrer'
       >
-        <Icon className='text-xl' icon='mdi:copyright' />
+        <Icon className='text-lg sm:text-xl' icon='mdi:copyright' />
         Thuyen Code
       </a>
       <span className='max-sm:hidden'>|</span>

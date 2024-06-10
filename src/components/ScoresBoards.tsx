@@ -4,7 +4,7 @@ import { type ReactElement } from 'react'
 
 function ScoresBoards(): ReactElement {
   return (
-    <div className='join inset-0 z-10 mx-auto h-fit w-fit bg-base-200 text-center font-display max-sm:join-vertical sm:absolute sm:mt-28 lg:mt-20'>
+    <div className='join inset-0 z-10 mx-auto size-fit bg-base-200 text-center font-display max-sm:join-vertical sm:absolute sm:mt-24'>
       <CurrentScoreBoard />
       <HighestScoreBoard />
     </div>

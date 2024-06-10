@@ -77,18 +77,18 @@ function SkillIconSlot({ icon }: SkillIconSlotProps): ReactNode {
 
   return (
     <div
-      className='tooltip tooltip-info relative duration-150 hover:scale-110'
+      className='tooltip tooltip-info duration-150 hover:scale-110'
       onClick={onClick}
       data-tip={capitalize(icon)}
     >
       <img
-        className={`h-20 w-20 transform-gpu cursor-pointer transition-opacity md:h-24 md:w-24 lg:h-32 lg:w-32 ${state.isClicked ? getAnimationStyle() : ''}`}
+        className={`size-20 transform-gpu cursor-pointer md:size-24 lg:size-32 ${state.isClicked ? getAnimationStyle() : ''}`}
         src={`https://skillicons.dev/icons?i=${icon}&theme=${isDarkMode ? 'light' : 'dark'}`}
         alt={icon}
       />
       {state.isClicked ? (
         <Icon
-          className='absolute inset-0 m-auto h-fit w-fit transform-gpu animate-ping text-2xl md:text-4xl'
+          className='absolute inset-0 m-auto size-fit transform-gpu animate-ping text-2xl md:text-4xl'
           icon={getMarkBtnIcon()}
         />
       ) : null}

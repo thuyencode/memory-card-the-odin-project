@@ -54,10 +54,10 @@ function HelpBubble(): ReactElement {
 
       <dialog className='modal' ref={ref}>
         <div className='modal-box p-4'>
-          <p className='inline-flex items-center gap-1 font-display text-lg font-bold'>
-            <Icon className='text-xl' icon='noto:thinking-face' />{' '}
+          <p className='inline-flex items-start gap-1 font-display text-lg font-bold'>
+            <Icon className='pt-1 text-xl' icon='noto:thinking-face' />{' '}
             <span>How to play this game?</span>{' '}
-            <Icon className='text-xl' icon='noto:video-game' />{' '}
+            <Icon className='pt-1 text-xl' icon='noto:video-game' />{' '}
           </p>
           <p className='py-4 font-medium'>
             Double-clicking any icons will reset the game.
